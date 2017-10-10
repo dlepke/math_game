@@ -1,17 +1,20 @@
-# this will determine the behaviour of the game for each turn
-# -> prompt generated question from question.rb
-# -> user answers prompt
-# -> program replies correct or no, updates score
-# -> program displays updated scores
-# -> end turn
-
-# store: turn formatting
-# send to game
-
 class Turn
+    def initialize(player)
+        @current_player = player.name
 
+        @new_question = Question.new
+        puts "#{@current_player}: #{@new_question.question}"
 
+        print "> "
+        @user_response = gets.chomp
 
-
-
+        @answer = @new_question.answer
+        if @user_response.to_i == @answer
+            puts "YES! You are correct."
+            player.score += 1
+        else
+            puts "Seriously? No!"
+            player.lives -= 1
+        end
+    end
 end
