@@ -9,4 +9,6 @@ player1 = gets.chomp
 puts "Player 2, please enter a name: "
 player2 = gets.chomp
 
-Game.new(player1, player2)
+game = MathGame.new(player1, player2)
+
+game.game_play
